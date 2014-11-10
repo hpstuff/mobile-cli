@@ -14,10 +14,8 @@ var pageControllerPath = "src/pages/"
 var pageLayoutPath = "res/layouts/"
 var classesPath = "src/app/"
 var manifest = "manifest.json"
-var controllerTemplate = ".data/TemplatePage.js"
-var classTemplate = ".data/ClassTemplate.js"
-
-console.log(__dirname);
+var controllerTemplate = __dirname+"/.data/TemplatePage.js"
+var classTemplate = __dirname+"/.data/ClassTemplate.js"
 
 program
     .version('0.0.1')
