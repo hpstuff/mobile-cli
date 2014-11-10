@@ -1,8 +1,9 @@
 {
-  "name": "Mobile-cli",
+  "name": "mobile",
   "version": "1.0.0",
+  "preferGlobal": "true",
   "description": "mobile comand line tool",
-  "main": "index.js",
+  "main": "mobile",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
