@@ -17,6 +17,8 @@ var manifest = "manifest.json"
 var controllerTemplate = ".data/TemplatePage.js"
 var classTemplate = ".data/ClassTemplate.js"
 
+console.log(__dirname);
+
 program
     .version('0.0.1')
     .command('create [name]')
