@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "mobile": "./bin/mobile"
+    "mobile": "index.js"
   },
   "author": "rumen.rusanov",
   "license": "ISC",
