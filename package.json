@@ -1,0 +1,19 @@
+{
+  "name": "Mobile-cli",
+  "version": "1.0.0",
+  "description": "mobile comand line tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mobile": "./bin/mobile"
+  },
+  "author": "rumen.rusanov",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.5.0",
+    "html": "0.0.7",
+    "jsdom": "^1.2.1"
+  }
+}
