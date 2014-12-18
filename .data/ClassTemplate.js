@@ -11,4 +11,4 @@
            //TODO Write your methods here
         })
     );
-})();
+}());
