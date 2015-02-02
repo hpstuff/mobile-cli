@@ -82,7 +82,6 @@ function removeClass(name){
             console.log('Successfully deleted '+name);
         }
     });
-    // removeClassFromIndexHTML(classesPath+name+".js");
 }
 
 function createClass(name){
@@ -95,7 +94,6 @@ function createClass(name){
             }
         }); 
     });
-    // addClassToIndexHTML(classesPath+name+".js");
 }
 
 function removePage(name){

@@ -17,4 +17,4 @@ var <PageName> = (function(){
             //TODO write your code when page is showing
         }
     });
-})();
+}());
