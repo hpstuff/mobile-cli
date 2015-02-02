@@ -7,6 +7,20 @@ npm install git://github.com/hpstuff/mobile-cli.git -g
 ```
 ####Usage
 
+init project
+
+```
+mobile init MyApplicationName
+cd MyApplicationName
+npm install
+grunt
+```
+
+and now you can open in your browser
+
+http://localhost:3030
+
+
 in mobile framework directory tipe
 ```
 mobile create --type page HelloWord
