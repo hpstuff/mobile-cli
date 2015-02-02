@@ -13,8 +13,10 @@
   "author": "rumen.rusanov",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.0.3",
     "commander": "^2.5.0",
     "html": "0.0.7",
-    "jsdom": "^1.2.1"
+    "jsdom": "^1.2.1",
+    "ncp": "^1.0.1"
   }
 }

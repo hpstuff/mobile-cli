@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+    font-family:  -apple-system-font, "Helvetica Neue", Arial, sans-serif;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background: #fff;
+}
+input, textarea {
+    font-family:  -apple-system-font, "Helvetica Neue", Arial, sans-serif;
+}
+.active {
+}
+.application {
+    display: -webkit-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.page {
+    display: -webkit-box;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    -webkit-box-orient: vertical;
+    background: #efeff4;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,0);
+}
+.page.visible {
+    visibility: visible;
+    z-index: 0;
+}
+.application.animating:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.0);
+    z-index: 999;
+}
+.content {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+}
+
+.button {
+    display: -webkit-box;
+    border-radius: 4px;
+    border: 0 none;
+    font-size: 17px;
+    color: #fff;
+    height: 40px;
+    margin: 5px;
+    background-color: #1284ff;
+}
+.button > span {
+    display: -webkit-box;
+    min-width: 60px;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.button.active > span {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+header .button {
+    margin: 0;
+    height: 100%;
+}
+
+header .button span {
+    min-width: 40px; 
+}
+
+header .button.active span {
+    background: transparent;
+}
+
+header .button.hidden {
+    visibility: hidden;
+}
+
+.button i {
+    display: -webkit-box;
+}
+.button small {
+    display: -webkit-box;
+    font-size: 17px;
+}
+.button i+small {
+    margin-left: 5px;
+}
+
+.button.light {
+    background-color: transparent;
+    color: #1284ff;
+    margin: 0;
+    height: 26px;
+}
+
+.button.light span {
+    font-size: 14px;
+    min-width: 0;
+    height: 100%;
+    border-radius: 4px;
+    padding: 0 5px;
+    -webkit-transition: background .1s linear, color .1s linear;
+    border: 1px solid #1284ff;
+}
+.button.light.active span {
+    color: #fff;
+    background: #1284ff;
+}
+
+header .button,
+.button.quiet {
+    background-color: transparent;
+    color: #1284ff;
+}
+header .button.active,
+.button.quiet.active {
+    color: rgba(18, 132, 255, 0.3);
+}
+
+header .button[data-disabled="true"],
+.button.quiet[data-disabled="true"] {
+    color: #ccc;
+}
+
+p {
+    padding: 0 0 15px;
+}
+
+.hbox {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+.vbox {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.top-bar {
+    display: -webkit-box;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+    -webkit-transform: translate3d(0,0,0);
+    height: 43px;
+    background: rgba(247, 247, 248, 0.95);
+    font-size: 17px;
+    z-index: 1;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="1" style="fill:#c4c4c4;" /></svg>');
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+}
+
+.fullscreen .top-bar {
+    padding-top: 20px;
+    height: 63px;
+}
+
+.fullscreen .top-bar h1 {
+    margin-top: 20px;
+}
+
+.top-bar .button {
+    position: relative;
+    z-index: 1;
+}
+
+.top-bar h1 {
+    position: absolute;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    left: 0;
+    right: 0;
+    top: 1px;
+    bottom: 1px;
+}
+
+.top-bar input {
+    -webkit-appearance: none;
+    border: 0 none;
+    border-radius: 3px;
+    background: #ddd;
+    font-size: 14px;
+    margin: 7px 10px;
+    height: 28px;
+    padding: 5px;
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+}
+
+.top-bar input::-webkit-input-placeholder {
+    color: rgb(169, 169, 169);
+    text-align: center;
+}
+/*  */
+/* .top-bar input:focus::-webkit-input-placeholder { */
+/*     text-align: left; */
+/* } */
+
+.list-holder {
+    display: -webkit-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+    background: #f7f7f8;
+    /* overflow-y: scroll; */
+    /* -webkit-overflow-scrolling: touch; */
+}
+.list-holder .list {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.list-holder .list .item {
+    display: block;
+    position: relative;
+    padding: 10px 15px;
+    list-style: none;
+    margin-bottom: -1px;
+}
+.list-holder .list .item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 1px;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="1" style="fill:#c4c4c4;" /></svg>');
+}
+
+.list-holder .list .item.active {
+    background: rgba(0,0,0,0.1);
+}
+
+.list-holder .loader {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    opacity: 0;
+    -webkit-transition: opacity 0.3s linear;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.list-holder .loader.visible {
+    display: -webkit-box;
+    opacity: 1;
+}
+
+.spinner {
+    width: 22px;
+}
+.spinner .path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    stroke: #1284ff;
+}
+
+.loader.visible .spinner {
+    -webkit-animation: rotator 1.4s linear infinite;
+}
+
+.loader.visible .spinner .path {
+    -webkit-transform-origin: center;
+    -webkit-animation: dash 1.4s ease-in-out infinite;
+}
+
+.pages-wrapper {
+    display: -webkit-box;
+    width: 100%;
+    -webkit-box-flex: 1;
+}
+
+.pages-holder {
+    min-width: 100%;
+    display: -webkit-box;
+}
+
+.tabs {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    background: rgba(247, 247, 248, 0.95);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="1" style="fill:#c4c4c4;" /></svg>');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+}
+
+.tabs .button {
+    width: 100%;
+    -webkit-box-flex: 1;
+    height: 50px;
+    margin: 0;
+    border-radius: 0;
+    color: #c4c4c4;
+    font-size: 22px;
+    background: transparent;
+}
+
+.tabs .button span {
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    padding: 0;
+    padding-bottom: 3px;
+    -webkit-box-orient: vertical;
+}
+
+.tabs .button span small {
+    margin: 0;
+    display: -webkit-box;
+    font-size: 10px;
+    padding-top: 5px;
+}
+
+.tabs .button.selected {
+    color: #1284ff;
+}
+
+.scrollable-content {
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    -webkit-box-flex: 1;
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.button.danger {
+    color: #ff3b30;
+}
+
+.content.start {
+    -webkit-box-pack: start;
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 1.5), 
+(min-resolution: 144dpi){ 
+    .top-bar {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0.25" width="1" height="0.75" style="fill:#c4c4c4;" /></svg>');
+    }
+
+    .tabs {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="0.75" style="fill:#c4c4c4;" /></svg>');
+    }
+
+    .list-holder .list .item:after {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="0.75" style="fill:#c4c4c4;" /></svg>');
+    }
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) {
+    .top-bar {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0.5" width="1" height="0.5" style="fill:#c4c4c4;" /></svg>');
+    }
+    .tabs {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0" width="1" height="0.5" style="fill:#c4c4c4;" /></svg>');
+    }
+
+    .list-holder .list .item:after {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect id="border" x="0" y="0.5" width="1" height="0.5" style="fill:#c4c4c4;" /></svg>');
+    }
+}
+

@@ -1,0 +1,13 @@
+{
+    "title": "Covent Garden",
+    "pages": [
+        {
+            "name": "HelloworldPage",
+            "main": true
+        }
+    ],
+    "layouts": [
+        "helloworld.html"
+    ],
+    "templates": []
+}
