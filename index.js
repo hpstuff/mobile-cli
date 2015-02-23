@@ -11,6 +11,7 @@ var html = require("html");
 var fs = require('fs');
 var colors = require('colors');
 var ncp = require('ncp').ncp;
+var exec = require('child_process').exec;
 
 ncp.limit = 16;
 
@@ -70,6 +71,20 @@ program
     .description('init your project with name')
     .action(function (name, options) {
         initProject(name)
+    });
+
+program
+    .comand('build [platform]')
+    .description('build phonegap application')
+    .action(function (platform, options) {
+        buildProject(platform);
+    });
+    
+program
+    .comand('run [platform]')
+    .description('build and run phonegap application')
+    .action(function (platform, options) {
+        runProject(platform);
     });
 
 program.parse(process.argv);
@@ -362,5 +377,31 @@ function editManifest(name){
                 console.log("[Saved!]".info +" Manifest was saved!");
             }
         }); 
+    });
+}
+
+function buildProject(platform, callback){
+    var callback = callback || function(){};
+
+    exec('grunt pg', function(err, data){
+        if(err) return;
+        exec('cd phonegap', function(err, data){
+            if(err) return;
+            exec('phonegap build '+platform, function(err, data){
+                if(err) return;
+                callback();
+            });
+        });
+    });
+}
+
+function runProject(platform, callback){
+    var callback = callback || function(){};
+
+    buildPLatform(platform, function(){
+        exec('phonegap run '+platform, function(err, data){
+            if(err) return;
+            callback();
+        });
     });
 }
