@@ -383,25 +383,41 @@ function editManifest(name){
 function buildProject(platform, callback){
     var callback = callback || function(){};
 
-    exec('grunt pg', function(err, data){
+    var build = exec('sh '+__dirname+'/.data/build_'+platform, function(err, data){
         if(err) return;
-        exec('cd phonegap', function(err, data){
-            if(err) return;
-            exec('phonegap build '+platform, function(err, data){
-                if(err) return;
-                callback();
-            });
-        });
+        callback();
+    });
+
+    build.stdout.on('data', function (data) {
+      console.log(data);
+    });
+
+    build.stderr.on('data', function (data) {
+      console.log(data);
+    });
+
+    build.on('exit', function (code) {
+      console.log(code);
     });
 }
 
 function runProject(platform, callback){
     var callback = callback || function(){};
 
-    buildProject(platform, function(){
-        exec('phonegap run '+platform, function(err, data){
-            if(err) return;
-            callback();
-        });
+    var run = exec('sh '+__dirname+'/.data/run_'+platform, function(err, data){
+        if(err) return;
+        callback();
+    });
+
+    run.stdout.on('data', function (data) {
+      console.log(data);
+    });
+
+    run.stderr.on('data', function (data) {
+      console.log(data);
+    });
+
+    run.on('exit', function (code) {
+      console.log(code);
     });
 }
