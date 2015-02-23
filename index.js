@@ -74,14 +74,14 @@ program
     });
 
 program
-    .comand('build [platform]')
+    .command('build [platform]')
     .description('build phonegap application')
     .action(function (platform, options) {
         buildProject(platform);
     });
     
 program
-    .comand('run [platform]')
+    .command('run [platform]')
     .description('build and run phonegap application')
     .action(function (platform, options) {
         runProject(platform);
