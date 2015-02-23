@@ -398,7 +398,7 @@ function buildProject(platform, callback){
 function runProject(platform, callback){
     var callback = callback || function(){};
 
-    buildPLatform(platform, function(){
+    buildProject(platform, function(){
         exec('phonegap run '+platform, function(err, data){
             if(err) return;
             callback();
