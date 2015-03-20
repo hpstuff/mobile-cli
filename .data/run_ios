@@ -1,0 +1,5 @@
+#!/bin/bash
+
+grunt pg
+cd phonegap
+phonegap run ios
