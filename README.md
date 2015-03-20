@@ -37,3 +37,12 @@ clear all page files
 ```
 mobile remove --type class MyData
 ```
+
+To build phonegap application use follow command
+```
+mobile build ios
+```
+or
+```
+mobile build android
+```
